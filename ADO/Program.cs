@@ -6,8 +6,6 @@ using MathNet.Numerics.Statistics;
 
 // Speed of binary inserts by insert ... select ...
 // CREATE TABLE DWH.LOGS (SENT_AT TIMESTAMP,TOPIC VARCHAR(256),RECEIVED_AT TIMESTAMP, BINARY  VARBINARY(1200) )
-// OR
-// CREATE TABLE DWH.LOGS (SENT_AT TIMESTAMP,TOPIC VARCHAR(256),RECEIVED_AT TIMESTAMP, BINARY  LONGVARBINARY  )
 namespace ConsoleApp2
 {
     class Program
@@ -53,7 +51,7 @@ namespace ConsoleApp2
 
             sqlInsert.Append($"INSERT INTO {tablename} SELECT ?,?,?,? ");
             for (cnt = 1; cnt < unioncount; cnt++) sqlInsert.Append("UNION ALL SELECT ?,?,?,? ");
-            Console.WriteLine(sqlInsert);
+            //Console.WriteLine(sqlInsert);
 
             cmdInsert = new IRISCommand(sqlInsert.ToString(), IRISConnect);
             cmdInsert.Prepare();
