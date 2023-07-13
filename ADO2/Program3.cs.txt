@@ -1,0 +1,82 @@
+﻿using System;
+using InterSystems.Data.IRISClient;
+using System.Threading;
+using System.Text;
+
+// 1st cached query disappear....
+namespace ADO
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            String host = "iris";
+            String port = "1972";
+            String username = "_SYSTEM";
+            String password = "SYS";
+            String Namespace = "USER";
+
+            DateTime t;
+           String queryString = "SELECT ID,sec FROM %NOPARALLEL TestTable where sec>=?";
+
+            String ConnectionString = "Server = " + host
+                + "; Port = " + port + "; Namespace = " + Namespace
+                + "; Password = " + password + "; User ID = " + username + ";SharedMemory=false;pooling=false;Log File=./cprovider.log";
+//                + "; Password = " + password + "; User ID = " + username + "; FeatureOption=3;SharedMemory=false;pooling=false;Log File=./cprovider.log";
+            IRISConnection IRISConnect = new IRISConnection();
+            IRISConnect.ConnectionString = ConnectionString;
+
+            IRISConnect.Open();
+
+            String tablename = "";
+
+            var sqlStatement1 = new StringBuilder();
+            tablename = "TestTable"; sqlStatement1.AppendLine($"CREATE TABLE {tablename} (t varchar(50), sec int, p1 int)");
+
+            IRISCommand cmd1 = new IRISCommand(sqlStatement1.ToString(), IRISConnect);
+            // ignore if already exists
+            try
+            {
+                cmd1.ExecuteNonQuery();
+            }
+            catch (Exception e) { Console.WriteLine(e.ToString()); }
+
+            var sqlInsert = new StringBuilder();
+            tablename = "TestTable"; sqlInsert.AppendLine($"INSERT INTO {tablename} VALUES (?,?,?)");
+
+            IRISCommand cmdInsert = new IRISCommand(sqlInsert.ToString(), IRISConnect);
+            cmdInsert.Prepare();
+            cmdInsert.Parameters.Clear();
+            t = DateTime.Now;
+
+            cmdInsert.Parameters.Add("@t", System.Data.SqlDbType.VarChar).Value = "abc";
+            cmdInsert.Parameters.Add("@sec", System.Data.SqlDbType.Int).Value = 10;
+            cmdInsert.Parameters.Add("@p1", System.Data.SqlDbType.Int).Value = 1;
+            cmdInsert.ExecuteNonQuery();
+
+            String x;
+            Console.WriteLine("Inserted. Hit any key to select");
+            x=Console.ReadLine();
+
+ 
+            IRISCommand cmdQuery = new IRISCommand(queryString, IRISConnect);
+            cmdQuery.Prepare();
+            cmdQuery.Parameters.Clear();
+            cmdQuery.Parameters.Add("@p1", System.Data.SqlDbType.Int).Value = 1;
+            IRISDataReader Reader = cmdQuery.ExecuteReader();
+
+            while (Reader.Read())
+            {
+                long seq=Reader.GetInt32(1);
+                Console.WriteLine(seq.ToString());
+            }
+
+            Console.WriteLine("Selected. Hit any key to close connection.");
+            x=Console.ReadLine();
+            IRISConnect.Close();
+
+        }
+
+    }
+}

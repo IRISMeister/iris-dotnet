@@ -1,0 +1,7 @@
+*/bin
+*/obj
+.vs
+ADO/InterSystems.Data.IRISClient.dll
+SQLSTAT.MD
+license/iris.key
+cprovider.log
