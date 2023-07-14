@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data.Odbc;
 using System.Diagnostics;
 using System.Text;
 using MathNet.Numerics.Statistics;
-using System.Data.Odbc;
 
 // Speed of binary inserts by insert ... select ...
 // CREATE TABLE DWH.ODBC (SENT_AT TIMESTAMP,TOPIC VARCHAR(256),RECEIVED_AT TIMESTAMP, BINARY  VARBINARY(1200) )
@@ -28,11 +28,11 @@ namespace ConsoleApp2
 
             sw.Reset();
 
-            Console.WriteLine("Using ODBC provider");
+            Console.WriteLine("Using ODBC.NET");
 
-            OdbcConnection OdbcConnect = new OdbcConnection("DSN=irisdatasource");
+            OdbcConnection connection = new OdbcConnection("DSN=irisdatasource");
 
-            OdbcConnect.Open();
+            connection.Open();
             OdbcCommand cmdInsert = null;
 
             String tablename = "DWH.ODBC";
@@ -44,7 +44,7 @@ namespace ConsoleApp2
             for (cnt = 1; cnt < unioncount; cnt++) sqlInsert.Append("UNION ALL SELECT ?,?,?,? ");
             //Console.WriteLine(sqlInsert);
 
-            cmdInsert = new OdbcCommand(sqlInsert.ToString(), OdbcConnect);
+            cmdInsert = new OdbcCommand(sqlInsert.ToString(), connection);
             cmdInsert.Prepare();
 
             for (j = 0; j < repeatcount; j++)
@@ -54,10 +54,17 @@ namespace ConsoleApp2
                 for (cnt = 0; cnt < unioncount * 4; cnt += 4)
                 {
                     t = DateTime.Now;
+                    // Add()のdeprecated警告を避けるためAddWithValue()に変更。
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","topic");
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
+                    /*
                     cmdInsert.Parameters.Add($"@p{cnt}", System.Data.SqlDbType.Int).Value = t;
                     cmdInsert.Parameters.Add($"@p{cnt + 1}", System.Data.SqlDbType.VarChar).Value = "topic";
                     cmdInsert.Parameters.Add($"@p{cnt + 2}", System.Data.SqlDbType.Int).Value = t;
                     cmdInsert.Parameters.Add($"@p{cnt + 3}", System.Data.SqlDbType.VarBinary).Value = data;
+                    */
                 }
                 cmdInsert.ExecuteNonQuery();
 
@@ -70,8 +77,8 @@ namespace ConsoleApp2
             Console.WriteLine(j + " times " + msttl + " msec");
 
             cmdInsert.Dispose();
-            OdbcConnect.Close();
-            OdbcConnect.Dispose();
+            connection.Close();
+            connection.Dispose();
 
             Console.WriteLine("実件数　　：{0}", repeatcount * unioncount);
             Console.WriteLine("回数　　　：{0}", stats.Length);

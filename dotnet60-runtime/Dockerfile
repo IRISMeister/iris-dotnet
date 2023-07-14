@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/dotnet/runtime:6.0-bookworm-slim AS build
+FROM containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1 AS IRIS
+FROM mcr.microsoft.com/dotnet/runtime:6.0-bookworm-slim
 
 RUN apt -y update \
  && DEBIAN_FRONTEND=noninteractive apt -y install odbcinst unixodbc \
@@ -10,11 +11,12 @@ ENV LIBDIR lib
 ENV ODBCDIR odbcdriver
 ENV ISC_LIBDIR ${ISC_PACKAGE_INSTALLDIR}/dev/dotnet/bin/
 ENV ISC_ODBC ${ISC_PACKAGE_INSTALLDIR}/dev/odbc/
-WORKDIR /ADO
+WORKDIR /DOTNET
+RUN mkdir ADO ODBC
 # ADO.NET files
-COPY --from=containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1 $ISC_LIBDIR/*.nupkg $LIBDIR/
+COPY --from=IRIS $ISC_LIBDIR/*.nupkg ./ADO/$LIBDIR/
 # ODBC Driver files
-COPY --from=containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1 /usr/irissys/bin/libirisodbcur6435.so $ODBCDIR/libirisodbcur6435.so
+COPY --from=IRIS /usr/irissys/bin/libirisod* ./ODBC/$ODBCDIR/
 COPY odbcinst.ini .
 COPY odbc.ini .
 RUN odbcinst -i -d -l -f ./odbcinst.ini && odbcinst -i -s -l -f ./odbc.ini

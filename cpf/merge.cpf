@@ -2,8 +2,12 @@
 PasswordHash=FBFE8593AEFA510C27FD184738D6E865A441DE98,u4ocm4qh
 
 [config]
-globals=0,0,256,0,0,0
+globals=0,0,4192,0,0,0
 
 [SQL]
 TimePrecision=6
 SaveMAC=1
+
+[Actions]
+CreateDatabase:Name=TEST,Directory=test,Size=5000
+CreateNamespace:Name=TEST,Globals=TEST

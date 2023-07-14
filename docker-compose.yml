@@ -4,24 +4,19 @@ services:
   iris:
     image: containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1
     hostname: iris
-
     ports:
     # superserver default port 
-    - "1972:1972"
+    - "51873:1972"
     # webserver/management portal port
     - "52873:52773"
-
     #command:
     #    --key /ISC/license/iris.key
-
     volumes:
     - ./:/ISC
-
     environment:
     - TZ=JST-9
     - ISC_CPF_MERGE_FILE=/ISC/cpf/merge.cpf
-
-    mem_limit: 1G
+    mem_limit: 5G
 
   dotnet-dev:
     build:
@@ -34,6 +29,7 @@ services:
     - TZ=JST-9
     volumes:
     - ./:/source
+    mem_limit: 0.5G
       
   dotnet-run:
     build:
@@ -46,5 +42,4 @@ services:
     - TZ=JST-9
     volumes:
     - ./:/source
-
     mem_limit: 1G
