@@ -12,7 +12,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            int repeatcount = 20000;
+            int repeatcount = 2000; //20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
@@ -56,7 +56,7 @@ namespace ConsoleApp2
                     t = DateTime.Now;
                     // Add()のdeprecated警告を避けるためAddWithValue()に変更。
                     cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
-                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","topic");
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
                     /*

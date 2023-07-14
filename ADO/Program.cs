@@ -18,7 +18,7 @@ namespace ConsoleApp2
             String password = "SYS";
             String Namespace = "TEST";
 
-            int repeatcount = 20000;
+            int repeatcount = 2000; //20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
@@ -65,9 +65,9 @@ namespace ConsoleApp2
                 for (cnt = 0; cnt < unioncount * 4; cnt += 4)
                 {
                     t = DateTime.Now;
-                    // Add()のdeprecated警告を避けるためAddWithValue()に変更。
+                    // Add()のdeprecated警告を避けるためAddWithValue()に変更。パフォーマンスもこのほうが良い模様。
                     cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
-                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","topic");
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
                     /*
