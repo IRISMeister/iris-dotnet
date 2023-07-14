@@ -18,6 +18,7 @@ namespace ConsoleApp2
             int j = 0;
             byte[] data = new byte[1000];
             for (int i = 0; i < 1000; i++) data[i] = (byte)(i % 256);
+            byte[] bytes;
 
             double[] stats = new double[repeatcount];
 
@@ -56,7 +57,10 @@ namespace ConsoleApp2
                     t = DateTime.Now;
                     // Add()のdeprecated警告を避けるためAddWithValue()に変更。
                     cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
-                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");
+                    //cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");  //文字が"ac"のように途切れる
+                    // byte配列化すればascii文字であればINSERTされる。
+                    bytes = Encoding.ASCII.GetBytes("abcde");
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}",bytes);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
                     /*
