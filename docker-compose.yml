@@ -2,7 +2,7 @@ version: '2'
 #
 services:
   iris:
-    image: containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1
+    image: containers.intersystems.com/intersystems/iris-community:2023.1.1.380.0
     hostname: iris
     ports:
     # superserver default port 

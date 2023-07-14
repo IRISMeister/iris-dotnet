@@ -1,4 +1,4 @@
-FROM containers.intersystems.com/intersystems/iris-community:2023.1.0.235.1 AS IRIS
+FROM containers.intersystems.com/intersystems/iris-community:2023.1.1.380.0 AS IRIS
 FROM mcr.microsoft.com/dotnet/sdk:6.0-bookworm-slim
 
 RUN apt -y update \
