@@ -40,6 +40,9 @@ services:
     tty: true
     environment:
     - TZ=JST-9
+    #- IRISODBCTRACE=1
+    #- IRISODBCTRACEFILE=/var/log/irisodbctrace.log
+    #- IRISODBCFEATUREOPTION=0
     volumes:
     - ./:/source
     mem_limit: 1G

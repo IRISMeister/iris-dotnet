@@ -1,0 +1,240 @@
+[ODBC][7][1689916031.526822][__handles.c][499]
+		Exit:[SQL_SUCCESS]
+			Environment = 0x556a6f7243c0
+[ODBC][7][1689916031.527312][SQLSetEnvAttr.c][189]
+		Entry:
+			Environment = 0x556a6f7243c0
+			Attribute = SQL_ATTR_ODBC_VERSION
+			Value = 0x3
+			StrLen = -6
+[ODBC][7][1689916031.527342][SQLSetEnvAttr.c][381]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.527348][SQLSetEnvAttr.c][189]
+		Entry:
+			Environment = 0x556a6f7243c0
+			Attribute = SQL_ATTR_CONNECTION_POOLING
+			Value = 0x2
+			StrLen = -6
+[ODBC][7][1689916031.527352][SQLSetEnvAttr.c][381]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.527612][SQLAllocHandle.c][395]
+		Entry:
+			Handle Type = 2
+			Input Handle = 0x556a6f7243c0
+		UNICODE Using encoding ASCII 'ANSI_X3.4-1968' and UNICODE 'UCS-2LE'
+
+[ODBC][7][1689916031.527674][SQLAllocHandle.c][531]
+		Exit:[SQL_SUCCESS]
+			Output Handle = 0x556a6f727190
+[ODBC][7][1689916031.527873][SQLSetConnectAttrW.c][335]
+		Entry:
+			Connection = 0x556a6f727190
+			Attribute = SQL_ATTR_LOGIN_TIMEOUT
+			Value = 0xf
+			StrLen = -5
+[ODBC][7][1689916031.527883][SQLSetConnectAttrW.c][652]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.528298][SQLDriverConnectW.c][298]
+		Entry:
+			Connection = 0x556a6f727190
+			Window Hdl = (nil)
+			Str In = [DSN=irisdatasource][length = 18 (SQL_NTS)]
+			Str Out = (nil)
+			Str Out Max = 0
+			Str Out Ptr = 0x7ffc165bb1f0
+			Completion = 0
+[ODBC][7][1689916031.553355][SQLDriverConnectW.c][1089]
+		Exit:[SQL_SUCCESS]                    
+			Connection Out [[NULL]]
+[ODBC][7][1689916031.556276][SQLAllocHandle.c][578]
+		Entry:
+			Handle Type = 3
+			Input Handle = 0x556a6f727190
+[ODBC][7][1689916031.556331][SQLAllocHandle.c][1123]
+		Exit:[SQL_SUCCESS]
+			Output Handle = 0x556a6f776b20
+[ODBC][7][1689916031.556591][SQLPrepareW.c][165]
+		Entry:
+			Statement = 0x556a6f776b20
+			SQL = [INSERT INTO DWH.TEST (SENT_AT,TOPIC) VALUES (?,?)][length = 49 (SQL_NTS)]
+[ODBC][7][1689916031.569530][SQLPrepareW.c][346]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.576877][SQLFreeStmt.c][144]
+		Entry:
+			Statement = 0x556a6f776b20
+			Option = 3
+[ODBC][7][1689916031.576920][SQLFreeStmt.c][266]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.577460][SQLSetStmtAttrW.c][166]
+		Entry:
+			Statement = 0x556a6f776b20
+			Attribute = SQL_ATTR_QUERY_TIMEOUT
+			Value = 0x1e
+			StrLen = -5
+[ODBC][7][1689916031.577494][SQLSetStmtAttrW.c][720]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.581942][SQLGetInfoW.c][191]
+		Entry:
+			Connection = 0x556a6f727190
+			Info Type = SQL_DRIVER_ODBC_VER
+			Info Value = 0x7f853801b2c0
+			Buffer Length = 100
+			StrLen = 0x7ffc165bb1e0
+[ODBC][7][1689916031.581983][SQLGetInfoW.c][519]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.582835][SQLGetInfoW.c][191]
+		Entry:
+			Connection = 0x556a6f727190
+			Info Type = SQL_CONVERT_VARCHAR
+			Info Value = 0x7f853801b7a0
+			Buffer Length = 4
+			StrLen = (nil)
+[ODBC][7][1689916031.582856][SQLGetInfoW.c][519]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.586146][SQLBindParameter.c][217]
+		Entry:
+			Statement = 0x556a6f776b20
+			Param Number = 1
+			Param Type = 1
+			C Type = 93 SQL_C_TYPE_TIMESTAMP 
+			SQL Type = 93 SQL_TYPE_TIMESTAMP
+			Col Def = 23
+			Scale = 0
+			Rgb Value = 0x556a6f7933b8
+			Value Max = 16
+			StrLen Or Ind = 0x556a6f7933b0
+[ODBC][7][1689916031.586175][SQLBindParameter.c][434]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.586303][SQLBindParameter.c][217]
+		Entry:
+			Statement = 0x556a6f776b20
+			Param Number = 2
+			Param Type = 1
+			C Type = -8 SQL_C_WCHAR
+			SQL Type = 12 SQL_VARCHAR
+			Col Def = 18
+			Scale = 0
+			Rgb Value = 0x556a6f7933d0
+			Value Max = 12
+			StrLen Or Ind = 0x556a6f7933c8
+[ODBC][7][1689916031.586320][SQLBindParameter.c][434]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.586466][SQLExecute.c][187]
+		Entry:
+			Statement = 0x556a6f776b20
+[ODBC][7][1689916031.587040][SQLExecute.c][357]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.587376][SQLRowCount.c][173]
+		Entry:
+			Statement = 0x556a6f776b20
+			Row Count = 0x7ffc165bb338
+[ODBC][7][1689916031.587393][SQLRowCount.c][247]
+		Exit:[SQL_SUCCESS]
+			Row Count = 0x7ffc165bb338 -> 1 (64 bits)
+[ODBC][7][1689916031.587991][SQLNumResultCols.c][156]
+		Entry:
+			Statement = 0x556a6f776b20
+			Column Count = 0x7ffc165bb3a0
+[ODBC][7][1689916031.588027][SQLNumResultCols.c][251]
+		Exit:[SQL_SUCCESS]
+			Count = 0x7ffc165bb3a0 -> 0
+[ODBC][7][1689916031.589048][SQLMoreResults.c][162]
+		Entry:
+			Statement = 0x556a6f776b20
+[ODBC][7][1689916031.589065][SQLMoreResults.c][329]
+		Exit:[SQL_NO_DATA]
+[ODBC][7][1689916031.589779][SQLFreeStmt.c][144]
+		Entry:
+			Statement = 0x556a6f776b20
+			Option = 0
+[ODBC][7][1689916031.589799][SQLFreeStmt.c][266]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.589957][SQLFreeStmt.c][144]
+		Entry:
+			Statement = 0x556a6f776b20
+			Option = 3
+[ODBC][7][1689916031.589968][SQLFreeStmt.c][266]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.589974][SQLSetStmtAttrW.c][166]
+		Entry:
+			Statement = 0x556a6f776b20
+			Attribute = SQL_ATTR_QUERY_TIMEOUT
+			Value = 0x1e
+			StrLen = -5
+[ODBC][7][1689916031.589986][SQLSetStmtAttrW.c][720]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.590045][SQLBindParameter.c][217]
+		Entry:
+			Statement = 0x556a6f776b20
+			Param Number = 1
+			Param Type = 1
+			C Type = 93 SQL_C_TYPE_TIMESTAMP 
+			SQL Type = 93 SQL_TYPE_TIMESTAMP
+			Col Def = 23
+			Scale = 0
+			Rgb Value = 0x556a6f7933b8
+			Value Max = 16
+			StrLen Or Ind = 0x556a6f7933b0
+[ODBC][7][1689916031.590059][SQLBindParameter.c][434]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.590109][SQLBindParameter.c][217]
+		Entry:
+			Statement = 0x556a6f776b20
+			Param Number = 2
+			Param Type = 1
+			C Type = -2 SQL_C_BINARY
+			SQL Type = -3 SQL_VARBINARY
+			Col Def = 5
+			Scale = 0
+			Rgb Value = 0x556a6f7933d0
+			Value Max = 5
+			StrLen Or Ind = 0x556a6f7933c8
+[ODBC][7][1689916031.590120][SQLBindParameter.c][434]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.590124][SQLExecute.c][187]
+		Entry:
+			Statement = 0x556a6f776b20
+[ODBC][7][1689916031.590457][SQLExecute.c][357]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.590468][SQLRowCount.c][173]
+		Entry:
+			Statement = 0x556a6f776b20
+			Row Count = 0x7ffc165bb338
+[ODBC][7][1689916031.590477][SQLRowCount.c][247]
+		Exit:[SQL_SUCCESS]
+			Row Count = 0x7ffc165bb338 -> 1 (64 bits)
+[ODBC][7][1689916031.590481][SQLNumResultCols.c][156]
+		Entry:
+			Statement = 0x556a6f776b20
+			Column Count = 0x7ffc165bb3a0
+[ODBC][7][1689916031.590487][SQLNumResultCols.c][251]
+		Exit:[SQL_SUCCESS]
+			Count = 0x7ffc165bb3a0 -> 0
+[ODBC][7][1689916031.590491][SQLMoreResults.c][162]
+		Entry:
+			Statement = 0x556a6f776b20
+[ODBC][7][1689916031.590498][SQLMoreResults.c][329]
+		Exit:[SQL_NO_DATA]
+[ODBC][7][1689916031.590503][SQLFreeStmt.c][144]
+		Entry:
+			Statement = 0x556a6f776b20
+			Option = 0
+[ODBC][7][1689916031.590509][SQLFreeStmt.c][266]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.591171][SQLFreeHandle.c][387]
+		Entry:
+			Handle Type = 3
+			Input Handle = 0x556a6f776b20
+[ODBC][7][1689916031.591195][SQLFreeHandle.c][490]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.592460][SQLDisconnect.c][208]
+		Entry:
+			Connection = 0x556a6f727190
+[ODBC][7][1689916031.592696][SQLDisconnect.c][358]
+		Exit:[SQL_SUCCESS]
+[ODBC][7][1689916031.592705][SQLFreeHandle.c][290]
+		Entry:
+			Handle Type = 2
+			Input Handle = 0x556a6f727190
+[ODBC][7][1689916031.592712][SQLFreeHandle.c][339]
+		Exit:[SQL_SUCCESS]

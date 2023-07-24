@@ -12,13 +12,14 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            int repeatcount = 2000; //20000;
+            String value="abcde";
+            int repeatcount = 20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
             byte[] data = new byte[1000];
             for (int i = 0; i < 1000; i++) data[i] = (byte)(i % 256);
-            byte[] bytes;
+            //byte[] bytesvalue;
 
             double[] stats = new double[repeatcount];
 
@@ -55,20 +56,11 @@ namespace ConsoleApp2
                 for (cnt = 0; cnt < unioncount * 4; cnt += 4)
                 {
                     t = DateTime.Now;
-                    // Add()のdeprecated警告を避けるためAddWithValue()に変更。
                     cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
-                    //cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");  //文字が"ac"のように途切れる
-                    // byte配列化すればascii文字であればINSERTされる。
-                    bytes = Encoding.ASCII.GetBytes("abcde");
-                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}",bytes);
+                    //bytesvalue = Encoding.ASCII.GetBytes(value);
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}",value);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
-                    /*
-                    cmdInsert.Parameters.Add($"@p{cnt}", System.Data.SqlDbType.Int).Value = t;
-                    cmdInsert.Parameters.Add($"@p{cnt + 1}", System.Data.SqlDbType.VarChar).Value = "topic";
-                    cmdInsert.Parameters.Add($"@p{cnt + 2}", System.Data.SqlDbType.Int).Value = t;
-                    cmdInsert.Parameters.Add($"@p{cnt + 3}", System.Data.SqlDbType.VarBinary).Value = data;
-                    */
                 }
                 cmdInsert.ExecuteNonQuery();
 
@@ -78,24 +70,23 @@ namespace ConsoleApp2
                 msttl += ms;
 
             }
-            Console.WriteLine(j + " times " + msttl + " msec");
+            Console.WriteLine(j + " executions in " + msttl + " msec");
 
             cmdInsert.Dispose();
             connection.Close();
             connection.Dispose();
 
-            Console.WriteLine("実件数　　：{0}", repeatcount * unioncount);
-            Console.WriteLine("回数　　　：{0}", stats.Length);
-            Console.WriteLine("平均　　　：{0}", stats.Mean());
-            Console.WriteLine("中央値　　：{0}", stats.Median());
-            Console.WriteLine("分散　　　：{0}", stats.PopulationVariance());
-            Console.WriteLine("母分散　　：{0}", stats.Variance());
-            Console.WriteLine("標準偏差　：{0}", stats.PopulationStandardDeviation());
-            Console.WriteLine("母標準偏差：{0}", stats.StandardDeviation());
-            Console.WriteLine("最小　　　：{0}", stats.Minimum());
-            Console.WriteLine("最大　　　：{0}", stats.Maximum());
-            Console.WriteLine("Percentile(95%)：{0}", stats.Percentile(95));
-
+            Console.WriteLine("Count:実件数      :{0}", repeatcount * unioncount);
+            Console.WriteLine("Execute Count:回数:{0}", stats.Length);
+            Console.WriteLine("Mean:平均         :{0}", stats.Mean());
+            Console.WriteLine("Median:中央値     :{0}", stats.Median());
+            Console.WriteLine("PopVar:分散       :{0}", stats.PopulationVariance());
+            Console.WriteLine("Var:母分散        :{0}", stats.Variance());
+            Console.WriteLine("PopStdDev:標準偏差:{0}", stats.PopulationStandardDeviation());
+            Console.WriteLine("StdDev:母標準偏差 :{0}", stats.StandardDeviation());
+            Console.WriteLine("Min:最小          :{0}", stats.Minimum());
+            Console.WriteLine("Max:最大          :{0}", stats.Maximum());
+            Console.WriteLine("Percentile(95%)   :{0}", stats.Percentile(95));
         }
     }
 }

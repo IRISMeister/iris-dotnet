@@ -1,0 +1,222 @@
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	Started At: Fri Jul 21 14:07:11 2023
+
+	Driver Name:	libirisodbc35.so
+	Unicode Client Version:	2023.1.1.380.0
+	Compiled at:	Jul  7 2023 23:42:13
+	ODBC Version:	03.51
+	Locale Setting:	C
+	ODBC Config file:	/etc/odbc.ini
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+Warning: IRISConnect Failed to load, Error Code: 2; Reason=irisconnect.so: cannot open shared object file: No such file or directory
+--> SQLAllocHandle: (07/21/23-14:07:11:529) htype = 1, inhandle = 00000000
+    --> SQLAllocEnv: (07/21/23-14:07:11:529) 
+    <-- SQLAllocEnv: (07/21/23-14:07:11:529) henv = 0x556a6f745780 returning 0
+<-- SQLAllocHandle: (07/21/23-14:07:11:529) Returning 0, outhandle = 0x556a6f745780
+
+
+--> SQLSetEnvAttr: (07/21/23-14:07:11:529) henv = 0x556a6f745780, Attribute=200, Value=3, StringLength=0
+<-- SQLSetEnvAttr: (07/21/23-14:07:11:529) Returning 0
+
+--> SQLGetEnvAttr: (07/21/23-14:07:11:529) henv = 0x556a6f745780, Attribute=200, ValuePtr=0x7ffc165b807c, BufferLength=0, StringLengthPointer=00000000
+<-- SQLGetEnvAttr: (07/21/23-14:07:11:529) Returning 0
+
+--> SQLAllocHandle: (07/21/23-14:07:11:529) htype = 2, inhandle = 0x556a6f745780
+    --> SQLAllocConnect: (07/21/23-14:07:11:529) henv = 0x556a6f745780
+    <-- SQLAllocConnect: (07/21/23-14:07:11:529) hdbc = 0x556a6f755850 returning 0
+<-- SQLAllocHandle: (07/21/23-14:07:11:529) Returning 0, outhandle = 0x556a6f755850
+
+
+--> SQLSetConnectAttr: (07/21/23-14:07:11:529) hdbc = 0x556a6f755850, Attribute=103, Value=15, StringLength=4
+    --> SQLSetConnectOption: (07/21/23-14:07:11:529) hdbc = 0x556a6f755850 fOption = 103 vParam = 15
+    <-- SQLSetConnectOption: (07/21/23-14:07:11:529) Returning 0
+<-- SQLSetConnectAttr: (07/21/23-14:07:11:529) Returning 0
+
+--> SQLDriverConnect: (07/21/23-14:07:11:529) hdbc = 0x556a6f755850  fDriverCompletion = 0
+    Connection String: D
+>> Sent: (07/21/23-14:07:11:529) [ThreadID = 0x7f8707c7a740]
+  0000:  02 00 00 00 01 00 00 00 00 00 00 00 48 53            ............HS
+  000E:  41 00                                                A.
+<< Received: (07/21/23-14:07:11:532) [ThreadID = 0x7f8707c7a740]
+  0000:  0D 00 00 00 01 00 00 00 00 00 00 00 00 00            ..............
+<< Received: (07/21/23-14:07:11:532) [ThreadID = 0x7f8707c7a740]
+  0000:  41 00 01 00 09 01 55 6E 69 63 6F 64 65               A.....Unicode
+>> Sent: (07/21/23-14:07:11:532) [ThreadID = 0x7f8707c7a740]
+  0000:  53 00 00 00 02 00 00 00 00 00 00 00 43 4E            S...........CN
+  000E:  06 01 54 45 53 54 09 01 5D 7C BE FE 40 3F            ..TEST..]|..@?
+  001C:  DF 05 01 9E FF DE 06 01 72 6F 6F 74 0E 01            ........root..
+  002A:  64 36 36 33 31 36 37 36 61 37 65 33 12 01            d6631676a7e3..
+  0038:  6C 69 62 69 72 69 73 6F 64 62 63 33 35 2E            libirisodbc35.
+  0046:  73 6F 02 04 0C 01 31 37 32 2E 33 30 2E 32            so....172.30.2
+  0054:  2E 33 03 01 00 03 04 01 02 04 03 04 03               .3...........
+<< Received: (07/21/23-14:07:11:553) [ThreadID = 0x7f8707c7a740]
+  0000:  55 00 00 00 02 00 00 00 00 00 00 00 00 00            U.............
+<< Received: (07/21/23-14:07:11:553) [ThreadID = 0x7f8707c7a740]
+  0000:  41 01 49 6E 74 65 72 53 79 73 74 65 6D 73            A.InterSystems
+  000E:  20 49 52 49 53 20 56 65 72 73 69 6F 6E 20             IRIS Version 
+  001C:  32 30 32 33 2E 31 2E 31 2E 33 38 30 20 78            2023.1.1.380 x
+  002A:  44 42 43 20 50 72 6F 74 6F 63 6F 6C 20 56            DBC Protocol V
+  0038:  65 72 73 69 6F 6E 20 36 35 03 04 01 03 04            ersion 65.....
+  0046:  01 03 04 23 06 01 31 30 33 35 02 04 03 04            ...#..1035....
+  0054:  03                                                   .
+<-- SQLDriverConnect: (07/21/23-14:07:11:553) Returning 0   
+szConnStrOut: (null)
+
+--> SQLGetFunctions: (07/21/23-14:07:11:553) hdbc = 0x556a6f755850 fFunction = 999
+<-- SQLGetFunctions: (07/21/23-14:07:11:553) Returning 0
+
+--> SQLAllocStmt: (07/21/23-14:07:11:556) hdbc = 0x556a6f755850
+<-- SQLAllocStmt: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0 returning 0
+
+--> SQLGetStmtAttr: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0, Attribute=10010, Value=0x7ffc165bb168, BufferLength=8, StringLengthPointer=00000000
+<-- SQLGetStmtAttr: (07/21/23-14:07:11:556) Returning 0
+
+--> SQLGetStmtAttr: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0, Attribute=10011, Value=0x7ffc165bb168, BufferLength=8, StringLengthPointer=00000000
+<-- SQLGetStmtAttr: (07/21/23-14:07:11:556) Returning 0
+
+--> SQLGetStmtAttr: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0, Attribute=10012, Value=0x7ffc165bb168, BufferLength=8, StringLengthPointer=00000000
+<-- SQLGetStmtAttr: (07/21/23-14:07:11:556) Returning 0
+
+--> SQLGetStmtAttr: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0, Attribute=10013, Value=0x7ffc165bb168, BufferLength=8, StringLengthPointer=00000000
+<-- SQLGetStmtAttr: (07/21/23-14:07:11:556) Returning 0
+
+--> SQLPrepare: (07/21/23-14:07:11:556) hstmt = 0x556a6f7775c0
+***
+INSERT INTO DWH.TEST (SENT_AT,TOPIC) VALUES (?,?)
+***
+>> Sent: (07/21/23-14:07:11:556) [ThreadID = 0x7f8707c7a740]
+  0000:  5D 00 00 00 03 00 00 00 01 00 00 00 50 50            ]...........PP
+  000E:  03 04 01 4D 01 49 4E 53 45 52 54 20 49 4E            ...M.INSERT IN
+  001C:  54 4F 20 44 57 48 20 2E 20 54 45 53 54 20            TO DWH . TEST 
+  002A:  28 20 53 45 4E 54 5F 41 54 20 2C 20 54 4F            ( SENT_AT , TO
+  0038:  50 49 43 20 29 20 56 41 4C 55 45 53 20 28            PIC ) VALUES (
+  0046:  20 3A 25 71 70 61 72 28 31 29 20 2C 20 3A             :%qpar(1) , :
+  0054:  25 71 70 61 72 28 32 29 20 29 03 04 02 03            %qpar(2) )....
+  0062:  04 3F 02 04 03 04 3F 02 04                           .?....?..
+<< Received: (07/21/23-14:07:11:569) [ThreadID = 0x7f8707c7a740]
+  0000:  58 00 00 00 03 00 00 00 01 00 00 00 00 00            X.............
+<< Received: (07/21/23-14:07:11:569) [ThreadID = 0x7f8707c7a740]
+  0000:  03 04 02 02 04 03 04 02 03 04 02 04 04 45            .............E
+  000E:  04 03 04 17 03 04 03 03 04 01 03 04 01 04            ..............
+  001C:  05 E4 FD 02 01 02 01 0A 01 44 57 48 2E 54            .........DWH.T
+  002A:  45 53 54 09 01 53 45 4E 54 5F 41 54 03 04            EST..SENT_AT..
+  0038:  0C 03 04 32 02 04 03 04 01 03 04 02 02 04            ...2..........
+  0046:  02 01 02 01 07 01 54 4F 50 49 43 03 04 01            ......TOPIC...
+  0054:  04 01 01 01                                          ....
+    checkStatementFeature: (07/21/23-14:07:11:569) statementFeatureOption: 2
+<-- SQLPrepare: (07/21/23-14:07:11:569) StatementType = 6 ColumnCount = 0 ParameterCount = 2 returning 0
+
+--> SQLFreeStmt: (07/21/23-14:07:11:576) hstmt = 0x556a6f7775c0 option = 3
+<-- SQLFreeStmt: (07/21/23-14:07:11:576) Returning 0
+
+--> SQLSetStmtAttr: (07/21/23-14:07:11:577) hstmt = 0x556a6f7775c0, Attribute=0, ValuePtr=30, StringLength=4294967291
+    --> SQLSetStmtOption: (07/21/23-14:07:11:577) hstmt = 0x556a6f7775c0 fOption = 0 vParam = 30
+    <-- SQLSetStmtOption: (07/21/23-14:07:11:577) Returning 0
+<-- SQLSetStmtAttr: (07/21/23-14:07:11:577) Returning 0
+
+--> SQLGetInfo: (07/21/23-14:07:11:581) hdbc = 0x556a6f755850 fInfoType = 77
+<-- SQLGetInfo: (07/21/23-14:07:11:581) Returning 0
+
+--> SQLGetInfo: (07/21/23-14:07:11:582) hdbc = 0x556a6f755850 fInfoType = 70
+<-- SQLGetInfo: (07/21/23-14:07:11:582) Returning 0
+
+--> SQLBindParameter: (07/21/23-14:07:11:586) hstmt = 0x556a6f7775c0 ipar = 1 fParamType = 1 fCType = 93 fSQLType = 93 cbColDef = 23 ibScale = 0 rgbValue = 0x556a6f7933b8 cbValueMax = 16  pcbValue = 0x556a6f7933b0
+Value = 2023-07-21 05:07:11.571000000
+<-- SQLBindParameter: (07/21/23-14:07:11:586) Returning 0
+
+--> SQLBindParameter: (07/21/23-14:07:11:586) hstmt = 0x556a6f7775c0 ipar = 2 fParamType = 1 fCType = -8 fSQLType = 12 cbColDef = 18 ibScale = 0 rgbValue = 0x556a6f7933d0 cbValueMax = 12  pcbValue = 0x556a6f7933c8
+Value = 
+<-- SQLBindParameter: (07/21/23-14:07:11:586) Returning 0
+
+--> SQLExecute: (07/21/23-14:07:11:586) hstmt = 0x556a6f7775c0
+>> Sent: (07/21/23-14:07:11:586) [ThreadID = 0x7f8707c7a740]
+  0000:  1D 00 00 00 04 00 00 00 01 00 00 00 50 55            ............PU
+  000E:  01 00 00 00 02 01 02 04 03 04 01 12 01 0A            ..............
+  001C:  04 38 14 C3 3C F8 00 06 10 06 02 61 00 63            .8..<......a.c
+  002A:  00                                                   .
+<< Received: (07/21/23-14:07:11:587) [ThreadID = 0x7f8707c7a740]
+  0000:  03 00 00 00 04 00 00 00 01 00 00 00 00 00            ..............
+<< Received: (07/21/23-14:07:11:587) [ThreadID = 0x7f8707c7a740]
+  0000:  03 04 01                                             ...
+<-- SQLExecute: (07/21/23-14:07:11:587) Returning 0
+
+--> SQLRowCount: (07/21/23-14:07:11:587) hstmt = 0x556a6f7775c0
+<-- SQLRowCount: (07/21/23-14:07:11:587) Row count = % returning 1
+
+--> SQLNumResultCols: (07/21/23-14:07:11:588) hstmt = 0x556a6f7775c0
+<-- SQLNumResultCols: (07/21/23-14:07:11:588) pccol = 0 returning 0
+
+--> SQLMoreResults: (07/21/23-14:07:11:589) hstmt = 0x556a6f7775c0
+<-- SQLMoreResults: (07/21/23-14:07:11:589) Multiple result sets only supported for stored procedures. Returning 100
+
+--> SQLFreeStmt: (07/21/23-14:07:11:589) hstmt = 0x556a6f7775c0 option = 0
+<-- SQLFreeStmt: (07/21/23-14:07:11:589) Returning 0
+
+--> SQLFreeStmt: (07/21/23-14:07:11:589) hstmt = 0x556a6f7775c0 option = 3
+<-- SQLFreeStmt: (07/21/23-14:07:11:589) Returning 0
+
+--> SQLSetStmtAttr: (07/21/23-14:07:11:589) hstmt = 0x556a6f7775c0, Attribute=0, ValuePtr=30, StringLength=4294967291
+    --> SQLSetStmtOption: (07/21/23-14:07:11:589) hstmt = 0x556a6f7775c0 fOption = 0 vParam = 30
+    <-- SQLSetStmtOption: (07/21/23-14:07:11:589) Returning 0
+<-- SQLSetStmtAttr: (07/21/23-14:07:11:589) Returning 0
+
+--> SQLBindParameter: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0 ipar = 1 fParamType = 1 fCType = 93 fSQLType = 93 cbColDef = 23 ibScale = 0 rgbValue = 0x556a6f7933b8 cbValueMax = 16  pcbValue = 0x556a6f7933b0
+Value = 2023-07-21 05:07:11.589000000
+<-- SQLBindParameter: (07/21/23-14:07:11:590) Returning 0
+
+--> SQLBindParameter: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0 ipar = 2 fParamType = 1 fCType = -2 fSQLType = -3 cbColDef = 5 ibScale = 0 rgbValue = 0x556a6f7933d0 cbValueMax = 5  pcbValue = 0x556a6f7933c8
+Value = <type -2 dump unsupported>
+<-- SQLBindParameter: (07/21/23-14:07:11:590) Returning 0
+
+--> SQLExecute: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0
+>> Sent: (07/21/23-14:07:11:590) [ThreadID = 0x7f8707c7a740]
+  0000:  1E 00 00 00 05 00 00 00 01 00 00 00 50 55            ............PU
+  000E:  01 00 00 00 02 01 02 04 03 04 01 13 01 0A            ..............
+  001C:  04 88 5A C3 3C F8 00 06 10 07 01 61 62 63            ..Z.<......abc
+  002A:  64 65                                                de
+<< Received: (07/21/23-14:07:11:590) [ThreadID = 0x7f8707c7a740]
+  0000:  03 00 00 00 05 00 00 00 01 00 00 00 00 00            ..............
+<< Received: (07/21/23-14:07:11:590) [ThreadID = 0x7f8707c7a740]
+  0000:  03 04 01                                             ...
+<-- SQLExecute: (07/21/23-14:07:11:590) Returning 0
+
+--> SQLRowCount: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0
+<-- SQLRowCount: (07/21/23-14:07:11:590) Row count = % returning 1
+
+--> SQLNumResultCols: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0
+<-- SQLNumResultCols: (07/21/23-14:07:11:590) pccol = 0 returning 0
+
+--> SQLMoreResults: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0
+<-- SQLMoreResults: (07/21/23-14:07:11:590) Multiple result sets only supported for stored procedures. Returning 100
+
+--> SQLFreeStmt: (07/21/23-14:07:11:590) hstmt = 0x556a6f7775c0 option = 0
+<-- SQLFreeStmt: (07/21/23-14:07:11:590) Returning 0
+
+--> SQLFreeHandle: (07/21/23-14:07:11:591) handle = 0x556a6f7775c0, handle type=3
+    --> SQLFreeStmt: (07/21/23-14:07:11:591) hstmt = 0x556a6f7775c0 option = 1
+    <-- SQLFreeStmt: (07/21/23-14:07:11:591) Returning 0
+<-- SQLFreeHandle: (07/21/23-14:07:11:591) Returning 0
+
+--> SQLDisconnect: (07/21/23-14:07:11:592) hdbc = 0x556a6f755850
+>> Sent: (07/21/23-14:07:11:592) [ThreadID = 0x7f8707c7a740]
+  0000:  00 00 00 00 06 00 00 00 00 00 00 00 44 43            ............DC
+<-- SQLDisconnect: (07/21/23-14:07:11:592) Returning 0
+
+--> SQLFreeHandle: (07/21/23-14:07:11:592) handle = 0x556a6f755850, handle type=2
+    --> SQLFreeConnect: (07/21/23-14:07:11:592) hdbc = 0x556a6f755850
+    <-- SQLFreeConnect: (07/21/23-14:07:11:592) Returning 0
+<-- SQLFreeHandle: (07/21/23-14:07:11:592) Returning 0
+
+--> SQLFreeHandle: (07/21/23-14:07:11:592) handle = 0x556a6f745780, handle type=1
+    --> SQLFreeEnv: (07/21/23-14:07:11:592) henv = 0x556a6f745780
+    <-- SQLFreeEnv: (07/21/23-14:07:11:592) Returning 0
+<-- SQLFreeHandle: (07/21/23-14:07:11:592) Returning 0
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+	Started At: Fri Jul 21 14:07:11 2023
+
+	Ended At  : Fri Jul 21 14:07:11 2023
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

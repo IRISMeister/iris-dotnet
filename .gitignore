@@ -5,3 +5,5 @@ ADO/InterSystems.Data.IRISClient.dll
 SQLSTAT.MD
 license/iris.key
 cprovider.log
+internal.txt
+memo.txt

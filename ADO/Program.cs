@@ -18,7 +18,8 @@ namespace ConsoleApp2
             String password = "SYS";
             String Namespace = "TEST";
 
-            int repeatcount = 2000; //20000;
+            String value="abcde";
+            int repeatcount = 20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
@@ -39,7 +40,7 @@ namespace ConsoleApp2
             String ConnectionString = "Server = " + host
                 + "; Port = " + port + "; Namespace = " + Namespace
                 + "; Password = " + password + "; User ID = " + username + ";SharedMemory=false;pooling=false";
-            //                + "; Password = " + password + "; User ID = " + username + "; FeatureOption=3;SharedMemory=false;pooling=false;Log File=./cprovider.log";
+            //  + "; Password = " + password + "; User ID = " + username + ";SharedMemory=false;pooling=false;Log File=./cprovider.log";
             IRISConnection connection = new IRISConnection();
             connection.ConnectionString = ConnectionString;
 
@@ -65,17 +66,10 @@ namespace ConsoleApp2
                 for (cnt = 0; cnt < unioncount * 4; cnt += 4)
                 {
                     t = DateTime.Now;
-                    // Add()のdeprecated警告を避けるためAddWithValue()に変更。パフォーマンスもこのほうが良い模様。
                     cmdInsert.Parameters.AddWithValue($"@p{cnt}",t);
-                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}","abcde");
+                    cmdInsert.Parameters.AddWithValue($"@p{cnt + 1}",value);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
-                    /*
-                    cmdInsert.Parameters.Add($"@p{cnt}", System.Data.SqlDbType.Int).Value = t;
-                    cmdInsert.Parameters.Add($"@p{cnt + 1}", System.Data.SqlDbType.VarChar).Value = "topic";
-                    cmdInsert.Parameters.Add($"@p{cnt + 2}", System.Data.SqlDbType.Int).Value = t;
-                    cmdInsert.Parameters.Add($"@p{cnt + 3}", System.Data.SqlDbType.VarBinary).Value = data;
-                    */
                 }
                 cmdInsert.ExecuteNonQuery();
 
@@ -85,24 +79,23 @@ namespace ConsoleApp2
                 msttl += ms;
 
             }
-            Console.WriteLine(j + " times " + msttl + " msec");
+            Console.WriteLine(j + " executions in " + msttl + " msec");
 
             cmdInsert.Dispose();
             connection.Close();
             connection.Dispose();
 
-            Console.WriteLine("実件数　　：{0}", repeatcount * unioncount);
-            Console.WriteLine("回数　　　：{0}", stats.Length);
-            Console.WriteLine("平均　　　：{0}", stats.Mean());
-            Console.WriteLine("中央値　　：{0}", stats.Median());
-            Console.WriteLine("分散　　　：{0}", stats.PopulationVariance());
-            Console.WriteLine("母分散　　：{0}", stats.Variance());
-            Console.WriteLine("標準偏差　：{0}", stats.PopulationStandardDeviation());
-            Console.WriteLine("母標準偏差：{0}", stats.StandardDeviation());
-            Console.WriteLine("最小　　　：{0}", stats.Minimum());
-            Console.WriteLine("最大　　　：{0}", stats.Maximum());
-            Console.WriteLine("Percentile(95%)：{0}", stats.Percentile(95));            
-
+            Console.WriteLine("Count:実件数      :{0}", repeatcount * unioncount);
+            Console.WriteLine("Execute Count:回数:{0}", stats.Length);
+            Console.WriteLine("Mean:平均         :{0}", stats.Mean());
+            Console.WriteLine("Median:中央値     :{0}", stats.Median());
+            Console.WriteLine("PopVar:分散       :{0}", stats.PopulationVariance());
+            Console.WriteLine("Var:母分散        :{0}", stats.Variance());
+            Console.WriteLine("PopStdDev:標準偏差:{0}", stats.PopulationStandardDeviation());
+            Console.WriteLine("StdDev:母標準偏差 :{0}", stats.StandardDeviation());
+            Console.WriteLine("Min:最小          :{0}", stats.Minimum());
+            Console.WriteLine("Max:最大          :{0}", stats.Maximum());
+            Console.WriteLine("Percentile(95%)   :{0}", stats.Percentile(95));
         }
     }
 }
