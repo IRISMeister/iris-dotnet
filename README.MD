@@ -24,7 +24,7 @@ swap=0
 ```
 $ ./build.sh
 ```
-It will build container images and c# projects (./ADO/ADO.csproj and ./ODBC/ODBC.csproj)
+It will build container images and c# projects (./ADO/ADO.csproj and ./ODBC/ODBC.csproj.  Please ignore ./ADO2 folder.)
 
 After that you will see three containers.
 ```
@@ -70,6 +70,22 @@ $
 This will run ODBC/Program.cs
 ```
 $ docker compose exec dotnet-run dotnet /source/app/ODBC.dll
+```
+Results are displayed on your screen.
+```
+Using ODBC.NET
+20000 executions in 61373 msec
+Count:実件数      :2000000
+Execute Count:回数:20000
+Mean:平均         :3.068649999999997
+Median:中央値     :3
+PopVar:分散       :8.127937177500002
+Var:母分散        :8.128343594679736
+PopStdDev:標準偏差:2.8509537312099615
+StdDev:母標準偏差 :2.8510250077261223
+Min:最小          :2
+Max:最大          :388
+Percentile(95%)   :4
 ```
 
 This will run ADO/Program.cs
