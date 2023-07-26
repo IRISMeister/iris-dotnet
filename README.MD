@@ -12,6 +12,7 @@ By using doker-compose.yaml
 - Allocate appropriate mem_limit.
 Be aware that it shouldn't exceed the memory allocation to your VM or WSL2(.wslconfig)
 
+I'm using WSL2 and following settings. 
 ```
 [wsl2]
 memory=8GB
