@@ -1,4 +1,11 @@
 FROM containers.intersystems.com/intersystems/iris-community:2023.1.1.380.0 AS IRIS
+FROM mcr.microsoft.com/dotnet/sdk:6.0-bookworm-slim AS build-env
+
+RUN mkdir /tools && dotnet tool install --tool-path /tools dotnet-trace \
+ && dotnet tool install --tool-path /tools dotnet-counters \
+ && dotnet tool install --tool-path /tools dotnet-dump \
+ && dotnet tool install --tool-path /tools dotnet-gcdump
+
 FROM mcr.microsoft.com/dotnet/runtime:6.0-bookworm-slim
 
 RUN apt -y update \
@@ -6,6 +13,10 @@ RUN apt -y update \
  && apt clean
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
+
+WORKDIR /tools
+COPY --from=build-env /tools .
+
 ENV ISC_PACKAGE_INSTALLDIR /usr/irissys
 ENV LIBDIR lib
 ENV ODBCDIR odbcdriver
@@ -19,4 +30,6 @@ COPY --from=IRIS $ISC_LIBDIR/*.nupkg ./ADO/$LIBDIR/
 COPY --from=IRIS /usr/irissys/bin/libirisod* ./ODBC/$ODBCDIR/
 COPY odbcinst.ini .
 COPY odbc.ini .
+COPY isql.txt .
 RUN odbcinst -i -d -l -f ./odbcinst.ini && odbcinst -i -s -l -f ./odbc.ini
+
