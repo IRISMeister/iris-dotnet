@@ -45,7 +45,9 @@ iris-dotnet-dotnet-run is where your c# programs are excecuted.
 iris-dotnet-dotnet-dev is where you build and publish your c# projects.
 
 # Steps to execute
-## Create tables via isql
+## (optional) Create tables via isql manually
+
+Now, this is done by build.sh
 
 ```
 $ docker compose exec dotnet-run isql irisdatasource
@@ -94,7 +96,7 @@ This will run ADO/Program.cs
 $ docker compose exec dotnet-run dotnet /source/app/ADO.dll
 ```
 
-You may want to truncate them for each run. Otherwise database size will keep growing beyond 4GB and negatively affect the results.
+You may want to "truncate table" them for each run. Otherwise database size will keep growing beyond 4GB and negatively affect the results.
 
 ```
 $ docker compose exec dotnet-run isql irisdatasource
