@@ -23,7 +23,7 @@ swap=0
 # How to start
 
 ```
-$ ./build.sh
+$ ./start.sh
 ```
 It will build container images and c# projects (./ADO/ADO.csproj and ./ODBC/ODBC.csproj.  Please ignore ./ADO2 folder.)
 
@@ -47,7 +47,7 @@ iris-dotnet-dotnet-dev is where you build and publish your c# projects.
 # Steps to execute
 ## (optional) Create tables via isql manually
 
-Now, this is done by build.sh
+Now, this is done by start.sh
 
 ```
 $ docker compose exec dotnet-run isql irisdatasource

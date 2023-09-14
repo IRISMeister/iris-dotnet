@@ -19,7 +19,7 @@ namespace ConsoleApp2
             String Namespace = "TEST";
 
             String value="abcde";
-            int repeatcount = 20000;
+            int repeatcount = 2000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
@@ -30,6 +30,7 @@ namespace ConsoleApp2
 
             DateTime t;
             var sw = new Stopwatch();
+            var swElasped = new Stopwatch();
             double ms = 0;
             double msttl = 0;
 
@@ -58,10 +59,12 @@ namespace ConsoleApp2
 
             cmdInsert = new IRISCommand(sqlInsert.ToString(), connection);
             cmdInsert.Prepare();
+            
+            swElasped.Start();
 
             for (j = 0; j < repeatcount; j++)
             {
-                sw.Restart();
+//                sw.Restart();
                 cmdInsert.Parameters.Clear();
                 for (cnt = 0; cnt < unioncount * 4; cnt += 4)
                 {
@@ -71,6 +74,7 @@ namespace ConsoleApp2
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 2}",t);
                     cmdInsert.Parameters.AddWithValue($"@p{cnt + 3}",data);
                 }
+                sw.Restart();
                 cmdInsert.ExecuteNonQuery();
 
                 sw.Stop();
@@ -80,6 +84,9 @@ namespace ConsoleApp2
 
             }
             Console.WriteLine(j + " executions in " + msttl + " msec");
+
+            swElasped.Stop();
+            Console.WriteLine("Elapded time " + swElasped.ElapsedMilliseconds + " msec");
 
             cmdInsert.Dispose();
             connection.Close();
