@@ -13,7 +13,7 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
             String value="abcde";
-            int repeatcount = 2000;
+            int repeatcount = 20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;

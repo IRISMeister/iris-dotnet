@@ -19,7 +19,7 @@ namespace ConsoleApp2
             String Namespace = "TEST";
 
             String value="abcde";
-            int repeatcount = 2000;
+            int repeatcount = 20000;
             int unioncount = 100;
             int cnt = 0;
             int j = 0;
